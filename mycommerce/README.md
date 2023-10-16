@@ -1,6 +1,3 @@
-Aqui está um exemplo de um arquivo "README.md" para um projeto de e-commerce que utiliza React, Styled Components e JavaScript para consumir a API do Mercado Livre e vender celulares:
-
-```markdown
 # E-commerce de Celulares
 
 Este projeto é um exemplo de um e-commerce que vende celulares. Ele foi desenvolvido usando React, Styled Components e JavaScript, e consome a API do Mercado Livre para exibir informações sobre os produtos.
@@ -22,19 +19,19 @@ Certifique-se de ter o Node.js instalado em sua máquina.
 1. Clone o repositório:
 
    ```bash
-   git clone https://github.com/seu-usuario/e-commerce-celulares.git
+   git clone https://github.com/alexsouza10/Mercado-On.git
    ```
 
 2. Navegue até o diretório do projeto:
 
    ```bash
-   cd e-commerce-celulares
+   cd mycommerce
    ```
 
 3. Instale as dependências:
 
    ```bash
-   npm install
+   npm i
    ```
 
 4. Inicie o aplicativo:
