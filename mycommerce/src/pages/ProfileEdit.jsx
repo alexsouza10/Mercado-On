@@ -1,16 +1,21 @@
 import React, { useState } from "react";
+import { setItem } from "../services/LocalStorageFuncs";
 
 export const ProfileEdit = () => {
-  const [ name, setName ] = useState('')
-  const [ email, setEmail ] = useState('')
-  const [ pass, setPass ] = useState('')
-  const [ img, setImg ] = useState('')
-  const [ cpf, setCpf ] = useState('')
+  const [ name, setName ] = useState('');
+  const [ email, setEmail ] = useState('');
+  const [ pass, setPass ] = useState('');
+  const [ img, setImg ] = useState('');
+  const [ cpf, setCpf ] = useState('');
 
   const cond = (
     name.length > 4 && (email.includes('@') && email.length > 8)
     && pass.length > 8 && img.length > 4 && cpf.length === 12
   )
+
+const saveChanges = () => {
+  setItem('usuario',(name,email,pass,img,cpf))
+}
 
   return (
     <div>
@@ -52,6 +57,7 @@ export const ProfileEdit = () => {
       <br /> <br /> <br />
       <button
         disable={!cond}
+        onClick={saveChanges}
       >
         Save Changes
       </button>
