@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { BsFillCartCheckFill, BsFillCartPlusFill } from "react-icons/bs";
 import { getItem, setItem } from "../services/LocalStorageFuncs";
 import { ProdutcsArea } from "../styles/CartStyle";
-import { Header } from "../components/Header";
+
 
 export const Store = () => {
   const [data, setData] = useState([]);
@@ -32,7 +32,6 @@ export const Store = () => {
 
   return (
     <div>
-      <Header />
       <ProdutcsArea>
         {data.map((e) => (
           <div key={e.id}>

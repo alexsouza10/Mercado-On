@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { setItem, getItem } from '../services/LocalStorageFuncs';
+import { setItem, getItem } from './services/LocalStorageFuncs';
 
 export const Login = (props) => {
   const [name, setName] = useState("");
