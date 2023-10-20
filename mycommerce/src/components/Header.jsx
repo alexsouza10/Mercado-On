@@ -4,8 +4,8 @@ import { HeaderArea } from "../styles/HeaderStyle";
 import { getItem } from "../services/LocalStorageFuncs";
 
 export const Header = () => {
-  const user = getItem('usuario')
-  const name = user.name.split(' ')
+  const user = getItem('usuario') || {};
+  const name = user.name || ' ';
 
   return (
     <HeaderArea>
