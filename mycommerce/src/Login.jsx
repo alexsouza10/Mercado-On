@@ -1,16 +1,23 @@
 import React, { useState } from "react";
-import { setItem, getItem } from './services/LocalStorageFuncs';
+import { setItem } from './services/LocalStorageFuncs';
+import {  getItem } from './services/LocalStorageFuncs'
 
 export const Login = (props) => {
-  const [name, setName] = useState("");
-  const [pass, setPass] = useState("");
+  const user = getItem('usuario')
+  
+  const [name, setName] = useState(user.name || '');
+  const [pass, setPass] = useState(user.pass || '');
 
-  const cond = name.length > 4 && pass.length > 8;
+  const cond = (name.length > 4 && pass.length > 8);
 
-  const saveUser = () => {
-    setItem('usuario', { name, pass });
-    const { history } = props;
-    history.push('/store');
+  const saveUser = (name,pass) => {
+    const {history: {push} } = props;
+    if(name === user.name && pass === user.pass){
+      push('/store');
+      return;
+    }
+    setItem('usuario',{ name, pass });
+    push('/store')
   }
 
   return (

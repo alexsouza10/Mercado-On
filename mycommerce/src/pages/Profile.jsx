@@ -1,22 +1,24 @@
-import React from 'react';
-import { getItem } from '../services/LocalStorageFuncs';
+import React from "react";
+import { getItem } from "../services/LocalStorageFuncs";
 
-export const Profile = (props) => { // Add 'props' as a parameter
-  const user = getItem('usuario');
-  
+export const Profile = (props) => {
+  // Add 'props' as a parameter
+  const user = getItem("usuario");
+
   const toProfileEdit = () => {
-    const { history: { push } } = props;
-    push('/profile/edit');
-  }
+    const {
+      history: { push } } = props;
+    push("/profile/edit");
+  };
 
   return (
     <div>
-      <p>{user ? user.name : 'User not found'}</p> {/* Check if 'user' exists before accessing 'name' */}
-      <button
-        onClick={toProfileEdit}  
-      >
-        Edit Profile
-      </button>
+      <p>{`Name: ${user.name}`}</p>
+      <p>{`CPF: ${user.cpf}`}</p>
+      <p>{`E-mail: ${user.email}`}</p>
+      <img src={user.img} alt="img-user" />
+      <br /> <br />
+      <button onClick={toProfileEdit}>Edit Profile</button>
     </div>
   );
 };

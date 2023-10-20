@@ -1,12 +1,13 @@
 import React, { useState } from "react";
-import { setItem } from "../services/LocalStorageFuncs";
+import { getItem, setItem } from "../services/LocalStorageFuncs";
 
-export const ProfileEdit = () => {
-  const [ name, setName ] = useState('');
-  const [ email, setEmail ] = useState('');
-  const [ pass, setPass ] = useState('');
-  const [ img, setImg ] = useState('');
-  const [ cpf, setCpf ] = useState('');
+export const ProfileEdit = (props) => {
+  const user = getItem('usuario')
+  const [ name, setName ] = useState(user.name || '');
+  const [ email, setEmail ] = useState(user.email || '');
+  const [ pass, setPass ] = useState(user.pass || '');
+  const [ img, setImg ] = useState(user.img ||'');
+  const [ cpf, setCpf ] = useState(user.cpf || '');
 
   const cond = (
     name.length > 4 && (email.includes('@') && email.length > 8)
@@ -15,6 +16,8 @@ export const ProfileEdit = () => {
 
 const saveChanges = () => {
   setItem('usuario',(name,email,pass,img,cpf))
+  const {history: { push }} = props;
+  push('/profile')
 }
 
   return (
