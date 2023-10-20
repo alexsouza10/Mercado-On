@@ -2,7 +2,6 @@ import React from "react";
 import { getItem } from "../services/LocalStorageFuncs";
 
 export const Profile = (props) => {
-  // Add 'props' as a parameter
   const user = getItem("usuario");
 
   const toProfileEdit = () => {
