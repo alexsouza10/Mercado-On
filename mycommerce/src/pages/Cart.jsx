@@ -3,13 +3,18 @@ import { getItem, setItem } from "../services/LocalStorageFuncs";
 import { BsFillCartDashFill } from "react-icons/bs";
 import { ProdutcsArea } from "../styles/CartStyle";
 
-export const Cart = () => {
+export const Cart = (props) => {
   const [data, setData] = useState(getItem("carrinhoYt") || []);
   const removeItem = (obj) => {
     const arrFilter = data.filter((e) => e.id !== obj.id);
     setData(arrFilter);
     setItem("carrinhoYt", arrFilter);
   };
+
+  const handleClick = () => {
+    const { history: { push } } = props;
+    push(`/payment/${subTotal}`)
+  }
 
   const subTotal = data.reduce((acc,cur) => acc + cur.price, 0)
   return (
@@ -27,6 +32,11 @@ export const Cart = () => {
           </div>
         ))}
       </ProdutcsArea>
+      <br /> <br />
+      <button
+      onClick={handleClick}>
+        Comprar
+      </button>
     </div>
   );
 };

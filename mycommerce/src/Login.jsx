@@ -7,6 +7,7 @@ export const Login = (props) => {
   
   const [name, setName] = useState(user.name || '');
   const [pass, setPass] = useState(user.pass || '');
+  const [passIncorrect, setPassIncorrect] = useState(false)
 
   const cond = (name.length > 4 && pass.length > 8);
 
@@ -15,6 +16,9 @@ export const Login = (props) => {
     if(name === user.name && pass === user.pass){
       push('/store');
       return;
+    } else if(name === user.name && pass !== user.pass){
+        setPassIncorrect(true);
+        return;
     }
     setItem('usuario',{ name, pass });
     push('/store')
@@ -34,6 +38,10 @@ export const Login = (props) => {
         onChange={(e) => setPass(e.target.value)}
         value={pass}
       />
+
+      {
+        passIncorrect && <p>Passowrd Icorrect</p> 
+      }
       <br /> <br />
 
       <button
