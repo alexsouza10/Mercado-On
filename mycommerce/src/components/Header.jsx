@@ -11,7 +11,7 @@ export const Header = () => {
     <HeaderArea>
       <Link to="/store">Store</Link>
       <Link to="/cart">Cart</Link>
-      <Link to="/profile">My profile</Link>
+      <Link to="/profile">My Profile</Link>
     </HeaderArea>
   );
 };
