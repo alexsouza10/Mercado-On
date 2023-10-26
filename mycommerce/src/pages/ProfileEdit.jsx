@@ -3,11 +3,11 @@ import { getItem, setItem } from "../services/LocalStorageFuncs";
 
 export const ProfileEdit = (props) => {
   const user = getItem('usuario');
-  const [name, setName] = useState(user.name || '');
-  const [email, setEmail] = useState(user.email || '');
-  const [pass, setPass] = useState(user.pass || '');
-  const [img, setImg] = useState(user.img || '');
-  const [cpf, setCpf] = useState(user.cpf || '');
+  const [name, setName] = useState(user?.name || '');
+  const [email, setEmail] = useState(user?.email || '');
+  const [pass, setPass] = useState(user?.pass || '');
+  const [img, setImg] = useState(user?.img || '');
+  const [cpf, setCpf] = useState(user?.cpf || '');
 
   const cond = (
     name.length > 4 && (email.includes('@') && email.length > 8)
@@ -15,8 +15,8 @@ export const ProfileEdit = (props) => {
   );
 
   const saveChanges = () => {
-    // Correção do uso de setItem
-    setItem('usuario', { name, email, pass, img, cpf });
+    const userData = { name, email, pass, img, cpf };
+    setItem('usuario', userData);
     const { history: { push } } = props;
     push('/profile');
   }
@@ -29,7 +29,7 @@ export const ProfileEdit = (props) => {
         value={name}
         onChange={({ target: { value } }) => setName(value)}
       />
-
+      
       <p>Email</p>
       <input
         type="email"

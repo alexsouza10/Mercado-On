@@ -14,6 +14,7 @@ export const Cart = (props) => {
   const handleClick = () => {
     const { history: { push } } = props;
     push(`/payment/${subTotal}`)
+    setItem('carrinhoYt',[])
   }
 
   const subTotal = data.reduce((acc,cur) => acc + cur.price, 0)
@@ -34,6 +35,7 @@ export const Cart = (props) => {
       </ProdutcsArea>
       <br /> <br />
       <button
+      disabled = { !subTotal > 0}
       onClick={handleClick}>
         Comprar
       </button>
