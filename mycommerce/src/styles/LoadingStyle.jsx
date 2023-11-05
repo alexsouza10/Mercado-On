@@ -1,7 +1,7 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 
 export const LoadContainer = styled.div `
-  background-color: #4e4e8a;
+  background-color: #4e4e8c;
   height: 100vh;
   width: 100vw;
   margin-top: -70px;
@@ -11,12 +11,22 @@ export const LoadContainer = styled.div `
   gap: 50px;
 
   div {
-    backgound-color: white;
-    height: 10em
+    background-color: white;
+    height: 10em;
+    width: 2em;
+    animation: ${frame} 1.5s linear infinite;
+
+    &:nth-child(2) {
+      animation-delay: 0.2s;
+    }
+
+    &:nth-child(3) {
+      animation-delay: 0.4s;
+    }
   }
 `;
 
-export const frame = KeyFrames `
+export const frame = keyframes`
   0% {
     height: 10em;
   }
@@ -26,6 +36,6 @@ export const frame = KeyFrames `
   }
 
   100% {
-    height: 10em
+    height: 10em;
   }
 `;
