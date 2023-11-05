@@ -1,5 +1,5 @@
-import React from 'react'
-import { LoadContainer, KeyFrames } from '../styles/LoadingStyle'
+import React from 'react';
+import { LoadContainer, keyframes } from '../styles/LoadingStyle';
 
 export const Loading = () => {
   return (
@@ -8,5 +8,5 @@ export const Loading = () => {
       <div></div>
       <div></div>
     </LoadContainer>
-  )
-}
+  );
+};
