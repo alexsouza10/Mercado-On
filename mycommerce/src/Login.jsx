@@ -1,28 +1,28 @@
 import React, { useState } from "react";
-import { setItem } from './services/LocalStorageFuncs';
-import {  getItem } from './services/LocalStorageFuncs'
+import { setItem, getItem } from './services/LocalStorageFuncs';
 
 export const Login = (props) => {
-  const user = getItem('usuario')
+  const storedUser = getItem('usuario');
+  const defaultUser = storedUser ? storedUser : { name: '', pass: '' };
   
-  const [name, setName] = useState(user.name || '');
-  const [pass, setPass] = useState(user.pass || '');
-  const [passIncorrect, setPassIncorrect] = useState(false)
+  const [name, setName] = useState(defaultUser.name);
+  const [pass, setPass] = useState(defaultUser.pass);
+  const [passIncorrect, setPassIncorrect] = useState(false);
 
-  const cond = (name.length > 4 && pass.length > 8);
+  const cond = name.length > 4 && pass.length > 8;
 
-  const saveUser = (name,pass) => {
-    const {history: {push} } = props;
-    if(name === user.name && pass === user.pass){
+  const saveUser = () => {
+    const { history: { push } } = props;
+    
+    if (name === defaultUser.name && pass === defaultUser.pass) {
       push('/store');
-      return;
-    } else if(name === user.name && pass !== user.pass){
-        setPassIncorrect(true);
-        return;
+    } else if (name === defaultUser.name && pass !== defaultUser.pass) {
+      setPassIncorrect(true);
+    } else {
+      setItem('usuario', { name, pass });
+      push('/store');
     }
-    setItem('usuario',{ name, pass });
-    push('/store')
-  }
+  };
 
   return (
     <div>
@@ -39,14 +39,12 @@ export const Login = (props) => {
         value={pass}
       />
 
-      {
-        passIncorrect && <p>Passowrd Icorrect</p> 
-      }
+      {passIncorrect && <p>Password Incorrect</p>}
       <br /> <br />
 
       <button
         type="button"
-        onClick={() => saveUser()}
+        onClick={saveUser}
         disabled={!cond}
       >        
         Sign In
