@@ -1,5 +1,5 @@
 import React from 'react';
-import { LoadContainer, keyframes } from '../styles/LoadingStyle';
+import { LoadContainer, KeyFrames } from '../styles/LoadingStyle';
 
 export const Loading = () => {
   return (

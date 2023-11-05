@@ -1,8 +1,8 @@
-import styled, { keyframes } from "styled-components";
+import styled, { KeyFrames } from "styled-components";
 
-export const LoadContainer = styled.div `
+export const LoadContainer = styled.div`
   background-color: #4e4e8c;
-  height: 100vh;
+  height: 94vh;
   width: 100vw;
   margin-top: -70px;
   display: flex;
@@ -26,7 +26,7 @@ export const LoadContainer = styled.div `
   }
 `;
 
-export const frame = keyframes`
+export const frame = KeyFrames`
   0% {
     height: 10em;
   }
